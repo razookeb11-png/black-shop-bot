@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-TOKEN = "8698840173:AAFhuh9hsd269T-o-xZpWgJEdUxq1J9o7xc"
+TOKEN = "8698840173:AAHNRrDPvEWW0XuDfyM_tlNXSBBw_flL158"
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -14,8 +14,7 @@ btn1 = types.KeyboardButton("🟢 خرید OPENVPN")
 btn2 = types.KeyboardButton("🚀 خرید V2rayNG")
 btn3 = types.KeyboardButton("📞 پشتیبانی")
 
-markup.add(btn1)
-markup.add(btn2)
+markup.add(btn1, btn2)
 markup.add(btn3)
 
 bot.send_message(
@@ -27,14 +26,13 @@ bot.send_message(
 
 @bot.message_handler(func=lambda message: True)
 def menu(message):
+if message.text == "🟢 خرید OPENVPN":
+bot.send_message(
+message.chat.id,
+"📦 پلن های OPENVPN\n\n5 گیگ — 1,800,000\n10 گیگ — 3,000,000"
+)
 
 ```
-if message.text == "🟢 خرید OPENVPN":
-    bot.send_message(
-        message.chat.id,
-        "📦 پلن های OPENVPN\n\n5 گیگ — 1,800,000\n10 گیگ — 3,000,000"
-    )
-
 elif message.text == "🚀 خرید V2rayNG":
     bot.send_message(
         message.chat.id,
@@ -49,3 +47,4 @@ elif message.text == "📞 پشتیبانی":
 ```
 
 bot.infinity_polling()
+
